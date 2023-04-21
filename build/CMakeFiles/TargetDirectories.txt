@@ -1,0 +1,3 @@
+/workspaces/SimpleNetRoutine/build/CMakeFiles/rebuild_cache.dir
+/workspaces/SimpleNetRoutine/build/CMakeFiles/edit_cache.dir
+/workspaces/SimpleNetRoutine/build/CMakeFiles/SNR.dir

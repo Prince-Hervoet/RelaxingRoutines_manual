@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/SNR.dir/src/main.cpp.o -o SNR 
