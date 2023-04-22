@@ -1,15 +1,16 @@
 #include "controller.hpp"
-#include "routine_handler.hpp"
 #include <cstring>
-#include <iostream>
 
 thread_local Controller localCon;
 
 void threadFunc(void *args)
 {
     RoutineHandler *rh = localCon.running;
-    rh->routine->task(rh->routine->args);
-    delete rh;
+    if (rh && rh->routine)
+    {
+        rh->routine->task(rh->routine->args);
+        localCon.removeRoutine(rh);
+    }
 }
 
 void callback(void *args)
@@ -25,7 +26,7 @@ RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
     pro->saveSize = 0;
     pro->capSize = INIT_STACK_SIZE;
     RoutineHandler *rh = new RoutineHandler(pro, this->running);
-    // this->loopList.add(*rh);
+    this->routineHandlers.insert(rh);
     this->increment += 1;
     return rh;
 }
@@ -48,14 +49,13 @@ void Controller::pendRoutine()
     pro->saveSize = needSize;
     memcpy(pro->save, &flag, needSize);
     pro->status = PENDING;
-
+    this->routineHandlers.erase(this->running);
     // 这里后续需要考虑父协程在子协程还没恢复的时候就挂了
     RoutineHandler *father = this->running->father;
     if (father)
     {
         father->routine->status = RUNNING;
     }
-    std::cout << "222asdfasdf222" << std::endl;
     this->running = this->running->father;
     swapcontext(&pro->current, pro->current.uc_link);
 }
@@ -92,10 +92,15 @@ void Controller::resumeRouine(RoutineHandler *rh)
     swapcontext(prevCtx, &pro->current);
 }
 
+void Controller::removeRoutine(RoutineHandler *rh)
+{
+    this->routineHandlers.erase(rh);
+    delete rh;
+}
+
 Controller::Controller(int limit)
 {
     this->limit = limit;
-    this->loopList = LoopList<RoutineHandler>(MAX_ROUTINE);
 }
 
 void Controller::addEpollEvent(int sockfd, int eventType)
