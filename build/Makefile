@@ -129,6 +129,30 @@ SNR/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/build
 .PHONY : SNR/fast
 
+src/controller.o: src/controller.cpp.o
+.PHONY : src/controller.o
+
+# target to build an object file
+src/controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/controller.cpp.o
+.PHONY : src/controller.cpp.o
+
+src/controller.i: src/controller.cpp.i
+.PHONY : src/controller.i
+
+# target to preprocess a source file
+src/controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/controller.cpp.i
+.PHONY : src/controller.cpp.i
+
+src/controller.s: src/controller.cpp.s
+.PHONY : src/controller.s
+
+# target to generate assembly for a file
+src/controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/controller.cpp.s
+.PHONY : src/controller.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -153,6 +177,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/simple_routine.o: src/simple_routine.cpp.o
+.PHONY : src/simple_routine.o
+
+# target to build an object file
+src/simple_routine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/simple_routine.cpp.o
+.PHONY : src/simple_routine.cpp.o
+
+src/simple_routine.i: src/simple_routine.cpp.i
+.PHONY : src/simple_routine.i
+
+# target to preprocess a source file
+src/simple_routine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/simple_routine.cpp.i
+.PHONY : src/simple_routine.cpp.i
+
+src/simple_routine.s: src/simple_routine.cpp.s
+.PHONY : src/simple_routine.s
+
+# target to generate assembly for a file
+src/simple_routine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/simple_routine.cpp.s
+.PHONY : src/simple_routine.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,9 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SNR"
+	@echo "... src/controller.o"
+	@echo "... src/controller.i"
+	@echo "... src/controller.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/simple_routine.o"
+	@echo "... src/simple_routine.i"
+	@echo "... src/simple_routine.s"
 .PHONY : help
 
 

@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/SNR.dir/src/controller.cpp.o"
+  "CMakeFiles/SNR.dir/src/controller.cpp.o.d"
   "CMakeFiles/SNR.dir/src/main.cpp.o"
   "CMakeFiles/SNR.dir/src/main.cpp.o.d"
+  "CMakeFiles/SNR.dir/src/simple_routine.cpp.o"
+  "CMakeFiles/SNR.dir/src/simple_routine.cpp.o.d"
   "SNR"
   "SNR.pdb"
 )

@@ -1,44 +1,67 @@
 #pragma once
-#include <cstddef>
+#include "util.hpp"
 typedef void *(*TaskFunc)(void *);
-
 #define INIT 0
-#define RUNNING 1
-#define PENDING 2
-#define STOP 3
+#define READY 1
+#define RUNNING 2
+#define PENDING 3
+#define DEAD 4
 
-class Scheduler;
-namespace snr
+class Controller;
+class RoutineProcess
 {
-    class Routine
+public:
+    unsigned long long id;
+    TaskFunc task;
+    void *args;
+    char *save;
+    Controller *con;
+    ucontext_t current;
+    int status = INIT;
+    int saveSize = 0;
+    int capSize = 0;
+
+public:
+    RoutineProcess(unsigned long long id, TaskFunc task, void *args)
     {
-    private:
-        size_t id;
-        TaskFunc task;
-        int status;
-        void *taskArgs;
-        Scheduler *sc;
-        char *stack;
+        this->id = id;
+        this->task = task;
+        this->args = args;
+    }
 
-    public:
-        Routine(size_t id, Scheduler *sc, TaskFunc task, void *args)
+    ~RoutineProcess()
+    {
+        if (save)
         {
-            this->id = id;
-            this->sc = sc;
-            this->status = INIT;
-            this->task = task;
-            this->taskArgs = args;
+            delete[] save;
         }
-
-        size_t getId()
-        {
-            return id;
-        }
-
-        void setStatus(int status)
-        {
-            this->status = status;
-        }
-    };
-
+    }
 };
+
+// class RoutineHandler
+// {
+//     friend RoutineHandler *simple_new(TaskFunc task, void *args);
+//     friend int simple_resume(RoutineProcess *routine);
+//     friend void simple_await();
+//     friend void t_simple_pause();
+//     friend class Controller;
+//     friend void threadFunc(void *args);
+
+// public:
+//     RoutineHandler()
+//     {
+//     }
+//     RoutineHandler(RoutineProcess *pro, RoutineHandler *father)
+//     {
+//         routine = pro;
+//     }
+
+//     ~RoutineHandler()
+//     {
+//         delete routine;
+//     }
+
+// private:
+//     RoutineHandler *father;
+//     RoutineProcess *routine;
+// };

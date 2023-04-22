@@ -1,6 +1,14 @@
-#include "tcp_socket.hpp"
-#include "loop_list.hpp"
+#include "simple_routine.hpp"
 #include <iostream>
+
+void *test(void *args)
+{
+    std::cout << "操你妈1" << std::endl;
+    simple_await();
+    std::cout << "操你妈3" << std::endl;
+    return nullptr;
+}
+
 int main()
 {
     // snr::TcpSocket *ts = new snr::TcpSocket();
@@ -9,18 +17,9 @@ int main()
     // std::cout << "listen on 9000" << std::endl;
     // ts->onListen();
     // ts->syncAccept();
-    int a = 10;
-    int b = 3434;
-    int e = 22222;
-    int er = 12121;
-    LoopList<int> ls(10);
-    ls.add(a);
-    ls.add(b);
-    ls.add(e);
-    ls.add(er);
-    ls.poll();
-    ls.poll();
-    std::cout
-        << ls.getSize() << std::endl;
+    RoutineHandler *rh = simple_new(test, nullptr);
+    simple_resume(rh);
+    std::cout << "操你妈2" << std::endl;
+    simple_resume(rh);
     return 0;
 }
