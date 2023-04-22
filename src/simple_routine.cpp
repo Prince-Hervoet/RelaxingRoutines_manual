@@ -33,4 +33,16 @@ void t_simple_pause()
 
 void simple_read(int sockfd, char buffer[], int count)
 {
+    int flags = fcntl(sockfd, F_GETFL, 0);
+    fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
+    ssize_t res = -1;
+    do
+    {
+        res = read(sockfd, buffer, count);
+        if (res == -1)
+        {
+            localCon.addEpollEvent(sockfd, EPOLLIN);
+            simple_await();
+        }
+    } while (res == -1);
 }

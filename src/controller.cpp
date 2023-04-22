@@ -12,6 +12,12 @@ void threadFunc(void *args)
     delete rh;
 }
 
+void callback(void *args)
+{
+    RoutineHandler *rh = (RoutineHandler *)args;
+    simple_resume(rh);
+}
+
 RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
 {
     RoutineProcess *pro = new RoutineProcess(this->increment, task, args);
@@ -90,4 +96,17 @@ Controller::Controller(int limit)
 {
     this->limit = limit;
     this->loopList = LoopList<RoutineHandler>(MAX_ROUTINE);
+}
+
+void Controller::addEpollEvent(int sockfd, int eventType)
+{
+    if (!this->ep)
+    {
+        this->ep = new EpollPack();
+        this->ep->setEpoll();
+    }
+    RoutineEvent *re = new RoutineEvent();
+    re->rh = this->running;
+    re->cf = callback;
+    this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)re);
 }

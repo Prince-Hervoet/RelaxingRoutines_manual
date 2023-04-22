@@ -9,6 +9,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 namespace snr
 {
@@ -31,7 +32,7 @@ namespace snr
             return this->sockfd;
         }
 
-        int setSocket()
+        int setSocket(bool isSync)
         {
             if (this->sockfd != -1)
             {
@@ -42,6 +43,11 @@ namespace snr
             {
                 std::cout << "Error: init socket error" << std::endl;
                 return -1;
+            }
+            if (isSync)
+            {
+                int flags = fcntl(sockfd, F_GETFL, 0);
+                fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
             }
             return this->sockfd;
         }
@@ -69,7 +75,7 @@ namespace snr
             return 1;
         }
 
-        int syncAccept()
+        int onAccept()
         {
             int conn = accept(sockfd, (struct sockaddr *)&clientAddr, &clientAddrLen);
             if (conn < 0)

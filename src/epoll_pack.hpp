@@ -22,12 +22,12 @@ public:
         }
     }
 
-    void setEvent(int eventName, int eventMode, int listenfd, void *data)
+    void setEvent(int op, int eventType, int listenfd, void *data)
     {
         event.data.fd = listenfd;
         event.data.ptr = data;
-        event.events = eventMode;
-        int result = epoll_ctl(epfd, eventName, listenfd, &event);
+        event.events = eventType;
+        int result = epoll_ctl(epfd, op, listenfd, &event);
         if (result == -1)
         {
             perror("epoll_ctl");

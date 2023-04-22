@@ -45,7 +45,7 @@ public:
     RoutineHandler *createRoutine(TaskFunc task, void *args);
     void pendRoutine();
     void resumeRouine(RoutineHandler *rh);
-    void addEpollEvent();
+    void addEpollEvent(int sockfd, int eventType);
     void addTimedTask();
 
     RoutineHandler *getRunning()

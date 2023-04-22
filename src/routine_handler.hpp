@@ -3,7 +3,7 @@
 class RoutineHandler
 {
     friend RoutineHandler *simple_new(TaskFunc task, void *args);
-    friend int simple_resume(RoutineProcess *routine);
+    friend void simple_resume(RoutineHandler *rh);
     friend void simple_await();
     friend void t_simple_pause();
     friend class Controller;
