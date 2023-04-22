@@ -3,9 +3,9 @@
 
 void *test(void *args)
 {
-    std::cout << "操你妈1" << std::endl;
+    std::cout << "one" << std::endl;
     simple_await();
-    std::cout << "操你妈3" << std::endl;
+    std::cout << "three" << std::endl;
     return nullptr;
 }
 
@@ -19,7 +19,7 @@ int main()
     // ts->syncAccept();
     RoutineHandler *rh = simple_new(test, nullptr);
     simple_resume(rh);
-    std::cout << "操你妈2" << std::endl;
+    std::cout << "two" << std::endl;
     simple_resume(rh);
     return 0;
 }
