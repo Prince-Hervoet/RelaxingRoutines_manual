@@ -17,9 +17,11 @@ int main()
     // std::cout << "listen on 9000" << std::endl;
     // ts->onListen();
     // ts->syncAccept();
-    RoutineHandler *rh = simple_new(test, nullptr);
-    simple_resume(rh);
+    RoutineHandler *rh1 = simple_new(test, nullptr);
+    RoutineHandler *rh2 = simple_new(test, nullptr);
+    simple_resume(rh1);
     std::cout << "two" << std::endl;
-    simple_resume(rh);
+    simple_resume(rh2);
+    simple_resume(rh1);
     return 0;
 }

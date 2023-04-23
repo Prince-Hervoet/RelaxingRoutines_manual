@@ -50,6 +50,7 @@
     "thread": "cpp",
     "typeinfo": "cpp",
     "condition_variable": "cpp",
-    "mutex": "cpp"
+    "mutex": "cpp",
+    "set": "cpp"
   }
 }

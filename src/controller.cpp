@@ -25,7 +25,7 @@ RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
     pro->save = new char[INIT_STACK_SIZE];
     pro->saveSize = 0;
     pro->capSize = INIT_STACK_SIZE;
-    RoutineHandler *rh = new RoutineHandler(pro, this->running);
+    RoutineHandler *rh = new RoutineHandler(pro, nullptr);
     this->routineHandlers.insert(rh);
     this->increment += 1;
     return rh;
@@ -74,20 +74,18 @@ void Controller::resumeRouine(RoutineHandler *rh)
         pro->current.uc_stack.ss_size = RUNNING_SIZE;
         pro->current.uc_link = prevCtx;
         makecontext(&pro->current, (void (*)(void))threadFunc, 0);
-        // std::cout << "asdf" << std::endl;
         break;
     case PENDING:
         break;
     default:
         return;
     }
-
+    rh->father = running;
     pro->status = RUNNING;
     if (running)
     {
-        running->routine->status = READY;
+        running->routine->status = PENDING;
     }
-
     this->running = rh;
     swapcontext(prevCtx, &pro->current);
 }

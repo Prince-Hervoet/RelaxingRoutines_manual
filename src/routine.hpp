@@ -1,11 +1,11 @@
 #pragma once
 #include "util.hpp"
 typedef void *(*TaskFunc)(void *);
+
 #define INIT 0
-#define READY 1
-#define RUNNING 2
-#define PENDING 3
-#define DEAD 4
+#define RUNNING 1
+#define PENDING 2
+#define DEAD 3
 
 class Controller;
 class RoutineProcess
