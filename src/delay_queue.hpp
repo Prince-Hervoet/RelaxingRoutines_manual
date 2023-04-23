@@ -9,7 +9,7 @@ private:
     int size = 0;
     std::vector<T> data;
 
-    void heapUp();
+    void heapUp(int index);
     void heapify();
 
 public:

@@ -1,6 +1,7 @@
 #pragma once
 #include <set>
 #include <ucontext.h>
+#include <chrono>
 #include "routine_handler.hpp"
 #include "loop_list.hpp"
 #include "epoll_pack.hpp"
@@ -19,6 +20,7 @@ typedef struct
 {
     RoutineHandler *rh;
     CallbackFunc cf;
+    std::chrono::microseconds lastUpdateAt;
 } RoutineEvent;
 
 struct HandlerComparator
