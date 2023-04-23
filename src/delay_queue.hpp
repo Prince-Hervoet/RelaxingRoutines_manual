@@ -1,24 +1,37 @@
+#pragma once
 #include "util.hpp"
 #include <vector>
+#include <queue>
+#include <chrono>
+
+typedef struct
+{
+    void *data;
+    long long lastUpdateAt;
+    bool operator<(const TimerTask &other) const
+    {                                             // 重载小于运算符
+        return lastUpdateAt > other.lastUpdateAt; // 按照分数从大到小排序
+    }
+} TimerTask;
 
 template <typename T>
 class DelayQueue
 {
 private:
     int limit = 0;
-    int size = 0;
-    std::vector<T> data;
-
-    void heapUp(int index);
-    void heapify();
+    std::priority_queue<TimerTask *> minHeap;
 
 public:
     int getSize()
     {
-        return size;
+        return minHeap.size();
     }
+
+    int push(T &t, long long timestamp);
+
+    T *peek();
 
     T *poll();
 
-    int add(T &t);
+    void pollMany(T *t[], int count);
 };

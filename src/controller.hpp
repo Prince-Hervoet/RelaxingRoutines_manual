@@ -20,7 +20,6 @@ typedef struct
 {
     RoutineHandler *rh;
     CallbackFunc cf;
-    std::chrono::microseconds lastUpdateAt;
 } RoutineEvent;
 
 struct HandlerComparator
@@ -56,7 +55,7 @@ public:
     void resumeRouine(RoutineHandler *rh);
     void removeRoutine(RoutineHandler *rh);
     void addEpollEvent(int sockfd, int eventType);
-    void addTimedTask();
+    void addTimedTask(int sockfd, long long timestamp);
 
     RoutineHandler *getRunning()
     {

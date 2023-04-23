@@ -114,3 +114,7 @@ void Controller::addEpollEvent(int sockfd, int eventType)
     re->cf = callback;
     this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)re);
 }
+
+void Controller::addTimedTask(int sockfd, long long timestamp)
+{
+}
