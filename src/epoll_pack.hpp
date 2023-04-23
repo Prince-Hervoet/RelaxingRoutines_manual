@@ -15,7 +15,7 @@ private:
 public:
     void setEpoll()
     {
-        this->epfd = (0);
+        this->epfd = epoll_create1(0);
         if (this->epfd == -1)
         {
             perror("epoll_create1");
