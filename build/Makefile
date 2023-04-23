@@ -153,30 +153,6 @@ src/controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
-src/delay_queue.o: src/delay_queue.cpp.o
-.PHONY : src/delay_queue.o
-
-# target to build an object file
-src/delay_queue.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.o
-.PHONY : src/delay_queue.cpp.o
-
-src/delay_queue.i: src/delay_queue.cpp.i
-.PHONY : src/delay_queue.i
-
-# target to preprocess a source file
-src/delay_queue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.i
-.PHONY : src/delay_queue.cpp.i
-
-src/delay_queue.s: src/delay_queue.cpp.s
-.PHONY : src/delay_queue.s
-
-# target to generate assembly for a file
-src/delay_queue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.s
-.PHONY : src/delay_queue.cpp.s
-
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -225,6 +201,30 @@ src/simple_routine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/simple_routine.cpp.s
 .PHONY : src/simple_routine.cpp.s
 
+src/util.o: src/util.cpp.o
+.PHONY : src/util.o
+
+# target to build an object file
+src/util.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/util.cpp.o
+.PHONY : src/util.cpp.o
+
+src/util.i: src/util.cpp.i
+.PHONY : src/util.i
+
+# target to preprocess a source file
+src/util.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/util.cpp.i
+.PHONY : src/util.cpp.i
+
+src/util.s: src/util.cpp.s
+.PHONY : src/util.s
+
+# target to generate assembly for a file
+src/util.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/util.cpp.s
+.PHONY : src/util.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -237,15 +237,15 @@ help:
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
-	@echo "... src/delay_queue.o"
-	@echo "... src/delay_queue.i"
-	@echo "... src/delay_queue.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
 	@echo "... src/simple_routine.o"
 	@echo "... src/simple_routine.i"
 	@echo "... src/simple_routine.s"
+	@echo "... src/util.o"
+	@echo "... src/util.i"
+	@echo "... src/util.s"
 .PHONY : help
 
 

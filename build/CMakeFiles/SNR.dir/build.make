@@ -83,24 +83,10 @@ CMakeFiles/SNR.dir/src/controller.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SNR.dir/src/controller.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SimpleNetRoutine/src/controller.cpp -o CMakeFiles/SNR.dir/src/controller.cpp.s
 
-CMakeFiles/SNR.dir/src/delay_queue.cpp.o: CMakeFiles/SNR.dir/flags.make
-CMakeFiles/SNR.dir/src/delay_queue.cpp.o: ../src/delay_queue.cpp
-CMakeFiles/SNR.dir/src/delay_queue.cpp.o: CMakeFiles/SNR.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SNR.dir/src/delay_queue.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SNR.dir/src/delay_queue.cpp.o -MF CMakeFiles/SNR.dir/src/delay_queue.cpp.o.d -o CMakeFiles/SNR.dir/src/delay_queue.cpp.o -c /workspaces/SimpleNetRoutine/src/delay_queue.cpp
-
-CMakeFiles/SNR.dir/src/delay_queue.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SNR.dir/src/delay_queue.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/SimpleNetRoutine/src/delay_queue.cpp > CMakeFiles/SNR.dir/src/delay_queue.cpp.i
-
-CMakeFiles/SNR.dir/src/delay_queue.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SNR.dir/src/delay_queue.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SimpleNetRoutine/src/delay_queue.cpp -o CMakeFiles/SNR.dir/src/delay_queue.cpp.s
-
 CMakeFiles/SNR.dir/src/main.cpp.o: CMakeFiles/SNR.dir/flags.make
 CMakeFiles/SNR.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/SNR.dir/src/main.cpp.o: CMakeFiles/SNR.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SNR.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SNR.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SNR.dir/src/main.cpp.o -MF CMakeFiles/SNR.dir/src/main.cpp.o.d -o CMakeFiles/SNR.dir/src/main.cpp.o -c /workspaces/SimpleNetRoutine/src/main.cpp
 
 CMakeFiles/SNR.dir/src/main.cpp.i: cmake_force
@@ -114,7 +100,7 @@ CMakeFiles/SNR.dir/src/main.cpp.s: cmake_force
 CMakeFiles/SNR.dir/src/simple_routine.cpp.o: CMakeFiles/SNR.dir/flags.make
 CMakeFiles/SNR.dir/src/simple_routine.cpp.o: ../src/simple_routine.cpp
 CMakeFiles/SNR.dir/src/simple_routine.cpp.o: CMakeFiles/SNR.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SNR.dir/src/simple_routine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SNR.dir/src/simple_routine.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SNR.dir/src/simple_routine.cpp.o -MF CMakeFiles/SNR.dir/src/simple_routine.cpp.o.d -o CMakeFiles/SNR.dir/src/simple_routine.cpp.o -c /workspaces/SimpleNetRoutine/src/simple_routine.cpp
 
 CMakeFiles/SNR.dir/src/simple_routine.cpp.i: cmake_force
@@ -125,20 +111,34 @@ CMakeFiles/SNR.dir/src/simple_routine.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SNR.dir/src/simple_routine.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SimpleNetRoutine/src/simple_routine.cpp -o CMakeFiles/SNR.dir/src/simple_routine.cpp.s
 
+CMakeFiles/SNR.dir/src/util.cpp.o: CMakeFiles/SNR.dir/flags.make
+CMakeFiles/SNR.dir/src/util.cpp.o: ../src/util.cpp
+CMakeFiles/SNR.dir/src/util.cpp.o: CMakeFiles/SNR.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SNR.dir/src/util.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SNR.dir/src/util.cpp.o -MF CMakeFiles/SNR.dir/src/util.cpp.o.d -o CMakeFiles/SNR.dir/src/util.cpp.o -c /workspaces/SimpleNetRoutine/src/util.cpp
+
+CMakeFiles/SNR.dir/src/util.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SNR.dir/src/util.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/SimpleNetRoutine/src/util.cpp > CMakeFiles/SNR.dir/src/util.cpp.i
+
+CMakeFiles/SNR.dir/src/util.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SNR.dir/src/util.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/SimpleNetRoutine/src/util.cpp -o CMakeFiles/SNR.dir/src/util.cpp.s
+
 # Object files for target SNR
 SNR_OBJECTS = \
 "CMakeFiles/SNR.dir/src/controller.cpp.o" \
-"CMakeFiles/SNR.dir/src/delay_queue.cpp.o" \
 "CMakeFiles/SNR.dir/src/main.cpp.o" \
-"CMakeFiles/SNR.dir/src/simple_routine.cpp.o"
+"CMakeFiles/SNR.dir/src/simple_routine.cpp.o" \
+"CMakeFiles/SNR.dir/src/util.cpp.o"
 
 # External object files for target SNR
 SNR_EXTERNAL_OBJECTS =
 
 SNR: CMakeFiles/SNR.dir/src/controller.cpp.o
-SNR: CMakeFiles/SNR.dir/src/delay_queue.cpp.o
 SNR: CMakeFiles/SNR.dir/src/main.cpp.o
 SNR: CMakeFiles/SNR.dir/src/simple_routine.cpp.o
+SNR: CMakeFiles/SNR.dir/src/util.cpp.o
 SNR: CMakeFiles/SNR.dir/build.make
 SNR: CMakeFiles/SNR.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/SimpleNetRoutine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable SNR"

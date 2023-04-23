@@ -31,7 +31,6 @@ struct HandlerComparator
 };
 
 // the controller of a thread
-
 class Controller
 {
     friend void threadFunc(void *args);
