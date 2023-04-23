@@ -1,4 +1,4 @@
-# SimpleNetRoutine
+# SimpleNetRoutine-lib
 
 This project is in development,please do not clone or run.And it will work like this:
 
