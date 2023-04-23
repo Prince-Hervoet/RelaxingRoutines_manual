@@ -115,6 +115,10 @@ void Controller::addEpollEvent(int sockfd, int eventType)
     this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)re);
 }
 
-void Controller::addTimedTask(int sockfd, long long timestamp)
+void Controller::addTimedTask(int sockfd, long long will)
 {
+    if (!this->dq)
+    {
+        this->dq = new DelayQueue<RoutineEvent>();
+    }
 }

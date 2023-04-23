@@ -49,12 +49,33 @@ private:
 public:
     Controller() {}
     Controller(int limit);
+    ~Controller()
+    {
+        if (running)
+        {
+            delete running;
+        }
+        if (ep)
+        {
+            delete ep;
+        }
+        if (dq)
+        {
+            delete dq;
+        }
+        for (auto it = routineHandlers.begin(); it != routineHandlers.end(); ++it)
+        {
+            RoutineHandler *rh = *it;
+            delete rh;
+        }
+        routineHandlers.clear();
+    }
     RoutineHandler *createRoutine(TaskFunc task, void *args);
     void pendRoutine();
     void resumeRouine(RoutineHandler *rh);
     void removeRoutine(RoutineHandler *rh);
     void addEpollEvent(int sockfd, int eventType);
-    void addTimedTask(int sockfd, long long timestamp);
+    void addTimedTask(int sockfd, long long will);
 
     RoutineHandler *getRunning()
     {

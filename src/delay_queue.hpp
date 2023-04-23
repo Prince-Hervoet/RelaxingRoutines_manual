@@ -28,6 +28,15 @@ public:
     {
     }
 
+    ~DelayQueue()
+    {
+        while (minHeap.size() > 0)
+        {
+            TimerTask *tt = minHeap.pop();
+            delete tt;
+        }
+    }
+
     int getSize()
     {
         return minHeap.size();

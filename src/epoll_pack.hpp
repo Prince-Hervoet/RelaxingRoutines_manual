@@ -13,6 +13,10 @@ private:
     struct epoll_event event, events[MAX_EVENTS];
 
 public:
+    ~EpollPack()
+    {
+        close(epfd);
+    }
     void setEpoll()
     {
         this->epfd = epoll_create1(0);
