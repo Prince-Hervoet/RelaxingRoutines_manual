@@ -153,6 +153,30 @@ src/controller.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/controller.cpp.s
 .PHONY : src/controller.cpp.s
 
+src/delay_queue.o: src/delay_queue.cpp.o
+.PHONY : src/delay_queue.o
+
+# target to build an object file
+src/delay_queue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.o
+.PHONY : src/delay_queue.cpp.o
+
+src/delay_queue.i: src/delay_queue.cpp.i
+.PHONY : src/delay_queue.i
+
+# target to preprocess a source file
+src/delay_queue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.i
+.PHONY : src/delay_queue.cpp.i
+
+src/delay_queue.s: src/delay_queue.cpp.s
+.PHONY : src/delay_queue.s
+
+# target to generate assembly for a file
+src/delay_queue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/delay_queue.cpp.s
+.PHONY : src/delay_queue.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -213,6 +237,9 @@ help:
 	@echo "... src/controller.o"
 	@echo "... src/controller.i"
 	@echo "... src/controller.s"
+	@echo "... src/delay_queue.o"
+	@echo "... src/delay_queue.i"
+	@echo "... src/delay_queue.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
