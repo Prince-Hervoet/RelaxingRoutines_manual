@@ -76,6 +76,7 @@ public:
     void resumeRouine(RoutineHandler *rh);
     void removeRoutine(RoutineHandler *rh);
     void addEpollEvent(int sockfd, int eventType);
+    void removeEpollEvent(int sockfd);
     void addTimedTask(int sockfd, long long will);
 
     RoutineHandler *getRunning()

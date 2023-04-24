@@ -115,6 +115,15 @@ void Controller::addEpollEvent(int sockfd, int eventType)
     this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)re);
 }
 
+void Controller::removeEpollEvent(int sockfd)
+{
+    if (!this->ep)
+    {
+        return;
+    }
+    this->ep->removeEvent(sockfd);
+}
+
 void Controller::addTimedTask(int sockfd, long long will)
 {
     if (!this->dq)

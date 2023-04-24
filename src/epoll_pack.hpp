@@ -38,6 +38,11 @@ public:
         }
     }
 
+    void removeEvent(int sockfd)
+    {
+        epoll_ctl(epfd, EPOLL_CTL_DEL, sockfd, nullptr);
+    }
+
     struct epoll_event *waitEvent(int waitTime, int &resultLen)
     {
         int count = epoll_wait(epfd, events, MAX_EVENTS, waitTime);

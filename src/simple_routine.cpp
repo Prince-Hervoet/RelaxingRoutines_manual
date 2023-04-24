@@ -75,7 +75,9 @@ void SimpleFdTimeoutList::checkAndClear()
         if (kv.second->lastUpdateAt + waitTime <= now)
         {
             this->timeoutList.erase(kv.first);
-            // todo
+            close(kv.first);
+            localCon.removeEpollEvent(kv.first);
+            delete kv.second;
         }
     }
 }
