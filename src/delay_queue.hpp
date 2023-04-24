@@ -32,8 +32,12 @@ public:
     {
         while (minHeap.size() > 0)
         {
-            TimerTask *tt = minHeap.pop();
-            delete tt;
+            TimerTask<T> *tt = minHeap.top();
+            minHeap.pop();
+            if (tt)
+            {
+                delete tt;
+            }
         }
     }
 

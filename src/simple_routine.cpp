@@ -19,8 +19,9 @@ void simple_await()
     localCon.pendRoutine();
 }
 
-void simple_epoll_event()
+void simple_epoll_event(int sockfd, int eventType)
 {
+    localCon.addEpollEvent(sockfd, eventType);
 }
 
 void simple_timed_task()
@@ -45,4 +46,36 @@ void simple_read(int sockfd, char buffer[], int count)
             simple_await();
         }
     } while (res == -1);
+}
+
+SimpleFdTimeoutList::SimpleFdTimeoutList()
+{
+    // 默认五分钟
+    this->waitTime = 1000 * 60 * 5;
+}
+
+SimpleFdTimeoutList::SimpleFdTimeoutList(bigInt waitTime)
+{
+    this->waitTime = waitTime;
+}
+
+void SimpleFdTimeoutList::push(int fd, RoutineHandler *rh)
+{
+    FdTimeoutPack *ftd = new FdTimeoutPack();
+    ftd->rh = rh;
+    ftd->lastUpdateAt = getNowTimestamp();
+    this->timeoutList.insert(std::make_pair(fd, ftd));
+}
+
+void SimpleFdTimeoutList::checkAndClear()
+{
+    bigInt now = getNowTimestamp();
+    for (auto &kv : this->timeoutList)
+    {
+        if (kv.second->lastUpdateAt + waitTime <= now)
+        {
+            this->timeoutList.erase(kv.first);
+            // todo
+        }
+    }
 }
