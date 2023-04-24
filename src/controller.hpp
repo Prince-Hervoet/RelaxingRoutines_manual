@@ -20,7 +20,6 @@ typedef struct
 {
     RoutineHandler *rh;
     CallbackFunc cf;
-    bigInt lastUpdateAt;
 } RoutineEvent;
 
 struct HandlerComparator

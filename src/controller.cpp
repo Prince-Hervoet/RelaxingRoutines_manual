@@ -130,4 +130,7 @@ void Controller::addTimedTask(int sockfd, long long will)
     {
         this->dq = new DelayQueue<RoutineEvent>();
     }
+    RoutineEvent *re = new RoutineEvent();
+    re->rh = this->running;
+    re->cf = callback;
 }
