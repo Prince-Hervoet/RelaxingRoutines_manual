@@ -13,8 +13,10 @@ class RoutineProcess
 {
 public:
     unsigned long long id;
+    // the task func of this routine
     TaskFunc task;
     void *args;
+    // the stack saved when the current coroutine was swapped out
     char *save;
     Controller *con;
     ucontext_t current;

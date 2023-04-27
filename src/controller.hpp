@@ -3,7 +3,7 @@
 #include <ucontext.h>
 #include <chrono>
 #include "routine_handler.hpp"
-#include "loop_list.hpp"
+#include "block_loop_list.hpp"
 #include "epoll_pack.hpp"
 #include "delay_queue.hpp"
 
@@ -14,8 +14,9 @@
 // max routines
 #define MAX_ROUTINE 128
 
-// class RoutineHandler;
-
+/*
+    RoutineEvent: the event form of a routineHandler
+*/
 typedef struct
 {
     RoutineHandler *rh;
@@ -36,12 +37,16 @@ class Controller
     friend void threadFunc(void *args);
 
 private:
+    // running stack: it is opened in the thread
     char runningStack[RUNNING_SIZE];
     std::set<RoutineHandler *, HandlerComparator> routineHandlers;
     unsigned long long increment;
     RoutineHandler *running;
+    // epoll event list
     EpollPack *ep;
+    // timer task list
     DelayQueue<RoutineEvent> *dq;
+    // this context of the main routine
     ucontext_t host;
     int size = 0;
     int limit = 0;
