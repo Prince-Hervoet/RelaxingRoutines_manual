@@ -28,12 +28,10 @@ This project is in development,please do not clone or run.And it will work like 
             three
 ```
 
-```
-    The current implementation is dominated by shared stacks.
+Some characters:
 
-    When a coroutine is started, it is first executed on the shared stack, and if there is no pending state, it is executed until the end.
-
-    If it is suspended, a space is needed to hold the current execution of the coroutine, just like a standalone stack.
-```
+- The current implementation is dominated by shared stacks.
+- When a coroutine is started, it is first executed on the shared stack, and if there is no pending state, it is executed until the end.
+- If it is suspended, a space is needed to hold the current execution of the coroutine, just like a standalone stack.
 
 ![image](https://user-images.githubusercontent.com/122962161/233800372-1c0f43fb-e458-4146-b9ee-f832426ceaf3.png)
