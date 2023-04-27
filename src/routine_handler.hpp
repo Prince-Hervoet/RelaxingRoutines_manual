@@ -27,6 +27,6 @@ public:
     }
 
 private:
-    RoutineHandler *father;
+    RoutineHandler *parent;
     RoutineProcess *routine;
 };

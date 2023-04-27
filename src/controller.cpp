@@ -23,6 +23,12 @@ void callback(void *args)
 RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
 {
     RoutineProcess *pro = new RoutineProcess(this->increment, task, args);
+
+    /*
+        the parent of this routine is nullptr,
+        because only the routine that started this routine is its parent,
+        not the coroutine that created it.
+    */
     RoutineHandler *rh = new RoutineHandler(pro, nullptr);
     this->routineHandlers.insert(rh);
     this->increment += 1;
@@ -55,13 +61,20 @@ void Controller::pendRoutine()
     memcpy(pro->save, &flag, needSize);
     pro->status = PENDING;
     this->routineHandlers.erase(this->running);
-    // 这里后续需要考虑父协程在子协程还没恢复的时候就挂了
-    RoutineHandler *father = this->running->father;
+
+    /*
+        When the current routine is pended, you go back to the routine where you started it.
+    */
+    RoutineHandler *father = this->running->parent;
+
+    /*
+        If its parent is empty, the main corroutine started it.
+    */
     if (father)
     {
         father->routine->status = RUNNING;
     }
-    this->running = this->running->father;
+    this->running = this->running->parent;
     swapcontext(&pro->current, pro->current.uc_link);
 }
 
@@ -85,8 +98,17 @@ void Controller::resumeRouine(RoutineHandler *rh)
     default:
         return;
     }
-    rh->father = running;
+
+    /*
+        The running routine is its parent.
+    */
+    rh->parent = running;
     pro->status = RUNNING;
+
+    /*
+        If the running routine isn't the main routine,it will be pending.
+        The main routine hasn't its status.(It is always running..)
+    */
     if (running)
     {
         running->routine->status = PENDING;
