@@ -23,9 +23,6 @@ void callback(void *args)
 RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
 {
     RoutineProcess *pro = new RoutineProcess(this->increment, task, args);
-    pro->save = new char[INIT_STACK_SIZE];
-    pro->saveSize = 0;
-    pro->capSize = INIT_STACK_SIZE;
     RoutineHandler *rh = new RoutineHandler(pro, nullptr);
     this->routineHandlers.insert(rh);
     this->increment += 1;
@@ -41,7 +38,14 @@ void Controller::pendRoutine()
     }
     RoutineProcess *pro = this->running->routine;
     int needSize = this->runningStack + RUNNING_SIZE - &flag;
-    if (pro->capSize < needSize)
+    if (!pro->save)
+    {
+        int needSizeBigger = needSize + 16;
+        pro->save = new char[needSizeBigger];
+        pro->saveSize = 0;
+        pro->capSize = needSizeBigger;
+    }
+    else if (pro->capSize < needSize)
     {
         delete[] pro->save;
         pro->capSize = needSize;
