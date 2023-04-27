@@ -51,6 +51,7 @@
     "typeinfo": "cpp",
     "condition_variable": "cpp",
     "mutex": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "map": "cpp"
   }
 }

@@ -12,7 +12,7 @@
 // routine init size
 #define INIT_STACK_SIZE 4096
 // max routines
-#define MAX_ROUTINE 64
+#define MAX_ROUTINE 128
 
 // class RoutineHandler;
 
