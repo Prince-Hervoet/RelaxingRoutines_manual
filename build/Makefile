@@ -201,6 +201,30 @@ src/simple_routine.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/simple_routine.cpp.s
 .PHONY : src/simple_routine.cpp.s
 
+src/single_example.o: src/single_example.cpp.o
+.PHONY : src/single_example.o
+
+# target to build an object file
+src/single_example.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/single_example.cpp.o
+.PHONY : src/single_example.cpp.o
+
+src/single_example.i: src/single_example.cpp.i
+.PHONY : src/single_example.i
+
+# target to preprocess a source file
+src/single_example.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/single_example.cpp.i
+.PHONY : src/single_example.cpp.i
+
+src/single_example.s: src/single_example.cpp.s
+.PHONY : src/single_example.s
+
+# target to generate assembly for a file
+src/single_example.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SNR.dir/build.make CMakeFiles/SNR.dir/src/single_example.cpp.s
+.PHONY : src/single_example.cpp.s
+
 src/util.o: src/util.cpp.o
 .PHONY : src/util.o
 
@@ -243,6 +267,9 @@ help:
 	@echo "... src/simple_routine.o"
 	@echo "... src/simple_routine.i"
 	@echo "... src/simple_routine.s"
+	@echo "... src/single_example.o"
+	@echo "... src/single_example.i"
+	@echo "... src/single_example.s"
 	@echo "... src/util.o"
 	@echo "... src/util.i"
 	@echo "... src/util.s"

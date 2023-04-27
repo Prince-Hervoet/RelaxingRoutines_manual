@@ -35,17 +35,17 @@ public:
 
     int add(T &data, int waitTime)
     {
-        mu.lock();
+        std::unique_lock<std::mutex> lck(mu);
         while (size == limit)
         {
             if (waitTime < 0)
             {
-                cond.wait();
+                cond.wait(lck);
                 continue;
             }
             else if (waitTime > 0)
             {
-                cond.wait_for(mu, std::chrono::milliseconds(waitTime));
+                cond.wait_for(lck, std::chrono::milliseconds(waitTime));
                 if (size > 0)
                 {
                     break;
@@ -59,29 +59,27 @@ public:
         ++size;
         tail = tail == limit ? 0 : tail;
         cond.notify_all();
-        mu.unlock();
         return 1;
     }
 
     T *poll(int waitTime)
     {
-        mu.lock();
+        std::unique_lock<std::mutex> lck(mu);
         while (size == 0)
         {
             if (waitTime < 0)
             {
-                cond.wait();
+                cond.wait(lck);
                 continue;
             }
             else if (waitTime > 0)
             {
-                cond.wait_for(mu, std::chrono::milliseconds(waitTime));
+                cond.wait_for(lck, std::chrono::milliseconds(waitTime));
                 if (size > 0)
                 {
                     break;
                 }
             }
-            mu.unlock();
             return nullptr;
         }
         T *ans = &ts[head];
@@ -89,7 +87,6 @@ public:
         ++head;
         head = head == limit ? 0 : head;
         cond.notify_all();
-        mu.unlock();
         return ans;
     }
 

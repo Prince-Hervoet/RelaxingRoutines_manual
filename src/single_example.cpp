@@ -26,6 +26,7 @@ static void *routineTaskFunc(void *args)
         }
     } while (res == -1);
     close(sockfd);
+    return nullptr;
 }
 
 void singleThreadTest()

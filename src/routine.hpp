@@ -3,9 +3,13 @@
 #include <ucontext.h>
 typedef void *(*TaskFunc)(void *);
 
+// Just created
 #define INIT 0
+// call resume
 #define RUNNING 1
+// call await
 #define PENDING 2
+// dead,but..I haven't used it yet.
 #define DEAD 3
 
 class Controller;

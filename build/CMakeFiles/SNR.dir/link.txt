@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/SNR.dir/src/controller.cpp.o CMakeFiles/SNR.dir/src/main.cpp.o CMakeFiles/SNR.dir/src/simple_routine.cpp.o CMakeFiles/SNR.dir/src/util.cpp.o -o SNR 
+/usr/bin/c++ CMakeFiles/SNR.dir/src/controller.cpp.o CMakeFiles/SNR.dir/src/main.cpp.o CMakeFiles/SNR.dir/src/simple_routine.cpp.o CMakeFiles/SNR.dir/src/single_example.cpp.o CMakeFiles/SNR.dir/src/util.cpp.o -o SNR 

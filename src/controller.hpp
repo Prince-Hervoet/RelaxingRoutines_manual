@@ -39,6 +39,12 @@ class Controller
 private:
     // running stack: it is opened in the thread
     char runningStack[RUNNING_SIZE];
+
+    // routines,why set?
+    /*
+        We're not sure if we're going to use id maps or something else,
+        so we're going to use a collection, so we can just grab it.
+    */
     std::set<RoutineHandler *, HandlerComparator> routineHandlers;
     unsigned long long increment;
     RoutineHandler *running;

@@ -1,5 +1,9 @@
 #include "routine.hpp"
 
+/*
+    this class...emm
+    is a handle to a real routine structure
+*/
 class RoutineHandler
 {
     friend RoutineHandler *simple_new(TaskFunc task, void *args);
