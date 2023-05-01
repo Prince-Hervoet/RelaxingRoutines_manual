@@ -6,5 +6,4 @@ typedef void *(*TaskFunc)(void *);
 typedef void (*CallbackFunc)(void *);
 typedef long long bigInt;
 
-long long
-getNowTimestamp();
+long long getNowTimestamp();
