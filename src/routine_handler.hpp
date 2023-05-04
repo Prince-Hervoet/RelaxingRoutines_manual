@@ -10,8 +10,8 @@ class RoutineHandler
     friend void simple_resume(RoutineHandler *rh);
     friend void simple_await();
     friend void t_simple_pause();
-    friend class Controller;
     friend void threadFunc(void *args);
+    friend class Controller;
 
 public:
     RoutineHandler()
