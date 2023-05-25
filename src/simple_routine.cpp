@@ -29,6 +29,11 @@ void simple_epoll_remove(int sockfd)
     localCon.removeEpollEvent(sockfd);
 }
 
+struct epoll_event *simple_epoll_wait()
+{
+    return localCon.waitEpollEvent();
+}
+
 void simple_read(int sockfd, char buffer[], int count)
 {
     int flags = fcntl(sockfd, F_GETFL, 0);

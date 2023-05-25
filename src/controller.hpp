@@ -34,7 +34,7 @@ private:
     // epoll event list
     EpollPack *ep;
     // timer task list
-    DelayQueue<RoutineHandler *> *dq;
+    DelayQueue<RoutineHandler> *dq;
     // this context of the main routine
     ucontext_t host;
 
@@ -46,7 +46,9 @@ public:
     void removeRoutine(RoutineHandler *rh);
     void addEpollEvent(int sockfd, int eventType);
     void removeEpollEvent(int sockfd);
+    struct epoll_event *waitEpollEvent();
     void addTimedTask(int sockfd, long long will);
+    RoutineHandler *waitTimedTask();
 
     Controller() {}
 

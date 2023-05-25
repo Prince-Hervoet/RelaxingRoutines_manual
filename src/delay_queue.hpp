@@ -52,7 +52,7 @@ public:
 
     T *poll();
 
-    int pollMany(T *t[], int count);
+    bool isReach();
 };
 
 template <typename T>
@@ -94,24 +94,8 @@ int DelayQueue<T>::push(T &t, long long will)
 }
 
 template <typename T>
-int DelayQueue<T>::pollMany(T *t[], int count)
+bool DelayQueue<T>::isReach()
 {
     long long now = getNowTimestamp();
-    int run = 0;
-    while (minHeap.size() > 0)
-    {
-        if (now < minHeap.top()->lastUpdateAt)
-        {
-            break;
-        }
-        if (run == count)
-        {
-            break;
-        }
-        struct TimerTask<T> *tt = minHeap.pop();
-        t[run] = tt->data;
-        delete tt;
-        ++run;
-    }
-    return run;
+    return !(now < minHeap.top()->lastUpdateAt);
 }

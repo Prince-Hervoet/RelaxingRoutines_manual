@@ -13,6 +13,12 @@ void simple_epoll_event(int sockfd, int eventType);
 
 void simple_epoll_remove(int sockfd);
 
+struct epoll_event *simple_epoll_wait();
+
+RoutineHandler *simple_timer_wait();
+
+void simple_add_timed();
+
 void simple_read(int sockfd, char buffer[], int count);
 
 typedef struct

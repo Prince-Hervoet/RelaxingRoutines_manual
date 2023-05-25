@@ -10,9 +10,11 @@ class EpollPack
 {
 private:
     int epfd = -1;
-    struct epoll_event event, events[MAX_EVENTS];
+    struct epoll_event event;
 
 public:
+    struct epoll_event events[MAX_EVENTS];
+
     ~EpollPack()
     {
         close(epfd);

@@ -147,16 +147,40 @@ void Controller::removeEpollEvent(int sockfd)
     this->ep->removeEvent(sockfd);
 }
 
+struct epoll_event *Controller::waitEpollEvent()
+{
+    if (!this->ep)
+    {
+        return nullptr;
+    }
+    int len = 0;
+    struct epoll_event *es = this->ep->waitEvent(10, len);
+    return es;
+}
+
 void Controller::addTimedTask(int sockfd, long long will)
 {
     if (!this->dq)
     {
-        this->dq = new DelayQueue<RoutineHandler *>();
+        this->dq = new DelayQueue<RoutineHandler>();
     }
     if (this->running)
     {
-        dq->push(this->running, will);
+        dq->push(*(this->running), will);
     }
+}
+
+RoutineHandler *Controller::waitTimedTask()
+{
+    if (!this->dq)
+    {
+        return nullptr;
+    }
+    if (this->dq->isReach())
+    {
+        return dq->poll();
+    }
+    return nullptr;
 }
 
 Controller::~Controller()
