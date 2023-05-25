@@ -24,14 +24,6 @@ void simple_epoll_event(int sockfd, int eventType)
     localCon.addEpollEvent(sockfd, eventType);
 }
 
-void simple_timed_task()
-{
-}
-
-void t_simple_pause()
-{
-}
-
 void simple_read(int sockfd, char buffer[], int count)
 {
     int flags = fcntl(sockfd, F_GETFL, 0);

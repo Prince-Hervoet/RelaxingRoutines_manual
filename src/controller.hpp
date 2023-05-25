@@ -76,8 +76,9 @@ public:
     {
         return running;
     }
+
     int getSize()
     {
-        return size;
+        return routineHandlers.size();
     }
 };

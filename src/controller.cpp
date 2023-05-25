@@ -17,6 +17,7 @@ void threadFunc(void *args)
         {
             std::cout << msg << std::endl;
         }
+        localCon.running = nullptr;
         localCon.removeRoutine(rh);
     }
 }
@@ -65,9 +66,8 @@ void Controller::pendRoutine()
         pro->save = new char[needSize];
     }
     pro->saveSize = needSize;
-    memcpy(pro->save, &flag, needSize);
+    memcpy(pro->save, (&flag), needSize);
     pro->status = PENDING;
-    this->routineHandlers.erase(this->running);
 
     /*
         When the current routine is pended, you go back to the routine where you started it.
@@ -90,7 +90,7 @@ void Controller::resumeRouine(RoutineHandler *rh)
 
     RoutineProcess *pro = rh->routine;
     RoutineHandler *running = this->running;
-    ucontext_t *prevCtx = running == nullptr ? &this->host : &(running->routine->current);
+    ucontext_t *prevCtx = running == nullptr ? &(this->host) : &(running->routine->current);
     switch (pro->status)
     {
     case INIT:
@@ -121,7 +121,7 @@ void Controller::resumeRouine(RoutineHandler *rh)
         running->routine->status = PENDING;
     }
     this->running = rh;
-    swapcontext(prevCtx, &pro->current);
+    swapcontext(prevCtx, &(pro->current));
 }
 
 void Controller::removeRoutine(RoutineHandler *rh)

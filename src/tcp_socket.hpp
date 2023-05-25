@@ -44,7 +44,7 @@ namespace snr
                 std::cout << "Error: init socket error" << std::endl;
                 return -1;
             }
-            if (isSync)
+            if (!isSync)
             {
                 int flags = fcntl(sockfd, F_GETFL, 0);
                 fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);

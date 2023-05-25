@@ -9,7 +9,6 @@ class RoutineHandler
     friend RoutineHandler *simple_new(TaskFunc task, void *args);
     friend void simple_resume(RoutineHandler *rh);
     friend void simple_await();
-    friend void t_simple_pause();
     friend void threadFunc(void *args);
     friend class Controller;
 

@@ -9,8 +9,6 @@ void simple_resume(RoutineHandler *rh);
 
 void simple_await();
 
-void t_simple_pause();
-
 void simple_epoll_event(int sockfd, int eventType);
 
 void simple_read(int sockfd, char buffer[], int count);
