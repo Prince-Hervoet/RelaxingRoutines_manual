@@ -9,9 +9,10 @@ void threadFunc(void *args)
     RoutineHandler *rh = localCon.running;
     if (rh && rh->routine)
     {
+        RoutineProcess *rp = rh->routine;
         try
         {
-            rh->routine->task(rh->routine->args);
+            rp->task(rp->args);
         }
         catch (const char *msg)
         {
@@ -130,11 +131,6 @@ void Controller::removeRoutine(RoutineHandler *rh)
     delete rh;
 }
 
-Controller::Controller(int limit)
-{
-    this->limit = limit;
-}
-
 void Controller::addEpollEvent(int sockfd, int eventType)
 {
     if (!this->ep)
@@ -167,4 +163,26 @@ void Controller::addTimedTask(int sockfd, long long will)
     {
         dq->push(this->running, will);
     }
+}
+
+Controller::Controller()
+{
+}
+
+Controller::~Controller()
+{
+    if (ep)
+    {
+        delete ep;
+    }
+    if (dq)
+    {
+        delete dq;
+    }
+    for (auto it = routineHandlers.begin(); it != routineHandlers.end(); ++it)
+    {
+        RoutineHandler *rh = *it;
+        delete rh;
+    }
+    routineHandlers.clear();
 }

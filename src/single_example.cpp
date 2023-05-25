@@ -22,7 +22,7 @@ void *routineTaskFunc(void *args)
         res = read(sockfd, buffer, 256);
         if (res == -1)
         {
-            // simple_epoll_event(sockfd, EPOLLIN);
+            simple_epoll_event(sockfd, EPOLLIN);
             simple_await();
         }
     } while (res == -1);

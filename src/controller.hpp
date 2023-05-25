@@ -37,33 +37,10 @@ private:
     DelayQueue<RoutineHandler *> *dq;
     // this context of the main routine
     ucontext_t host;
-    int size = 0;
-    int limit = 0;
 
 public:
     Controller() {}
-    Controller(int limit);
-    ~Controller()
-    {
-        if (running)
-        {
-            delete running;
-        }
-        if (ep)
-        {
-            delete ep;
-        }
-        if (dq)
-        {
-            delete dq;
-        }
-        for (auto it = routineHandlers.begin(); it != routineHandlers.end(); ++it)
-        {
-            RoutineHandler *rh = *it;
-            delete rh;
-        }
-        routineHandlers.clear();
-    }
+    ~Controller();
     RoutineHandler *createRoutine(TaskFunc task, void *args);
     void pendRoutine();
     void resumeRouine(RoutineHandler *rh);

@@ -6,10 +6,7 @@
 
 void *test(void *args)
 {
-    int a = 123;
-    int adf = 3434;
-    int sadf = 123123123;
-    std::cout << sadf << std::endl;
+    std::cout << "one" << std::endl;
     simple_await();
     std::cout << "three" << std::endl;
     return nullptr;
