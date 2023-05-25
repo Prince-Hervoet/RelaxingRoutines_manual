@@ -159,10 +159,6 @@ void Controller::addTimedTask(int sockfd, long long will)
     }
 }
 
-Controller::Controller()
-{
-}
-
 Controller::~Controller()
 {
     if (ep)

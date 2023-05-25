@@ -39,7 +39,6 @@ private:
     ucontext_t host;
 
 public:
-    Controller() {}
     ~Controller();
     RoutineHandler *createRoutine(TaskFunc task, void *args);
     void pendRoutine();
@@ -48,6 +47,8 @@ public:
     void addEpollEvent(int sockfd, int eventType);
     void removeEpollEvent(int sockfd);
     void addTimedTask(int sockfd, long long will);
+
+    Controller() {}
 
     RoutineHandler *getRunning()
     {
