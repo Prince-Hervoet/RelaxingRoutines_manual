@@ -23,12 +23,6 @@ void threadFunc(void *args)
     }
 }
 
-void callback(void *args)
-{
-    RoutineHandler *rh = (RoutineHandler *)args;
-    simple_resume(rh);
-}
-
 RoutineHandler *Controller::createRoutine(TaskFunc task, void *args)
 {
     RoutineProcess *pro = new RoutineProcess(this->increment, task, args);

@@ -24,6 +24,11 @@ void simple_epoll_event(int sockfd, int eventType)
     localCon.addEpollEvent(sockfd, eventType);
 }
 
+void simple_epoll_remove(int sockfd)
+{
+    localCon.removeEpollEvent(sockfd);
+}
+
 void simple_read(int sockfd, char buffer[], int count)
 {
     int flags = fcntl(sockfd, F_GETFL, 0);

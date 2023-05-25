@@ -14,13 +14,11 @@ void *test(void *args)
 
 int main()
 {
-    // RoutineHandler *rh1 = simple_new(test, nullptr);
-    // RoutineHandler *rh2 = simple_new(test, nullptr);
-    // simple_resume(rh1);
-    // std::cout << "two" << std::endl;
-    // simple_resume(rh2);
-    // simple_resume(rh1);
-    // return 0;
-
-    singleThreadTest();
+    RoutineHandler *rh1 = simple_new(test, nullptr);
+    RoutineHandler *rh2 = simple_new(test, nullptr);
+    simple_resume(rh1);
+    std::cout << "two" << std::endl;
+    simple_resume(rh2);
+    simple_resume(rh1);
+    return 0;
 }

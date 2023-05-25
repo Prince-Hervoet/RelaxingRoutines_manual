@@ -11,6 +11,8 @@ void simple_await();
 
 void simple_epoll_event(int sockfd, int eventType);
 
+void simple_epoll_remove(int sockfd);
+
 void simple_read(int sockfd, char buffer[], int count);
 
 typedef struct
