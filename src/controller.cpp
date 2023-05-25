@@ -9,7 +9,14 @@ void threadFunc(void *args)
     RoutineHandler *rh = localCon.running;
     if (rh && rh->routine)
     {
-        rh->routine->task(rh->routine->args);
+        try
+        {
+            rh->routine->task(rh->routine->args);
+        }
+        catch (const char *msg)
+        {
+            std::cout << msg << std::endl;
+        }
         localCon.removeRoutine(rh);
     }
 }
@@ -135,10 +142,10 @@ void Controller::addEpollEvent(int sockfd, int eventType)
         this->ep = new EpollPack();
         this->ep->setEpoll();
     }
-    RoutineEvent *re = new RoutineEvent();
-    re->rh = this->running;
-    re->cf = callback;
-    this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)re);
+    if (this->running)
+    {
+        this->ep->setEvent(EPOLL_CTL_ADD, eventType, sockfd, (void *)(this->running));
+    }
 }
 
 void Controller::removeEpollEvent(int sockfd)
@@ -154,9 +161,10 @@ void Controller::addTimedTask(int sockfd, long long will)
 {
     if (!this->dq)
     {
-        this->dq = new DelayQueue<RoutineEvent>();
+        this->dq = new DelayQueue<RoutineHandler *>();
     }
-    RoutineEvent *re = new RoutineEvent();
-    re->rh = this->running;
-    re->cf = callback;
+    if (this->running)
+    {
+        dq->push(this->running, will);
+    }
 }

@@ -14,23 +14,6 @@
 // max routines
 #define MAX_ROUTINE 128
 
-/*
-    RoutineEvent: the event form of a routineHandler
-*/
-typedef struct
-{
-    RoutineHandler *rh;
-    CallbackFunc cf;
-} RoutineEvent;
-
-struct HandlerComparator
-{
-    bool operator()(const RoutineHandler *a, const RoutineHandler *b) const
-    {
-        return a > b; // 降序排序
-    }
-};
-
 // the controller of a thread
 class Controller
 {
@@ -45,13 +28,13 @@ private:
         We're not sure if we're going to use id maps or something else,
         so we're going to use a collection, so we can just grab it.
     */
-    std::set<RoutineHandler *, HandlerComparator> routineHandlers;
+    std::set<RoutineHandler *> routineHandlers;
     unsigned long long increment;
     RoutineHandler *running;
     // epoll event list
     EpollPack *ep;
     // timer task list
-    DelayQueue<RoutineEvent> *dq;
+    DelayQueue<RoutineHandler *> *dq;
     // this context of the main routine
     ucontext_t host;
     int size = 0;
