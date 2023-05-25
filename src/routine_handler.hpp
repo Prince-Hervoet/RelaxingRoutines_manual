@@ -13,9 +13,8 @@ class RoutineHandler
     friend class Controller;
 
 public:
-    RoutineHandler()
-    {
-    }
+    RoutineHandler() {}
+
     RoutineHandler(RoutineProcess *pro, RoutineHandler *father)
     {
         routine = pro;
