@@ -44,31 +44,3 @@ public:
         }
     }
 };
-
-// class RoutineHandler
-// {
-//     friend RoutineHandler *simple_new(TaskFunc task, void *args);
-//     friend int simple_resume(RoutineProcess *routine);
-//     friend void simple_await();
-//     friend void t_simple_pause();
-//     friend class Controller;
-//     friend void threadFunc(void *args);
-
-// public:
-//     RoutineHandler()
-//     {
-//     }
-//     RoutineHandler(RoutineProcess *pro, RoutineHandler *father)
-//     {
-//         routine = pro;
-//     }
-
-//     ~RoutineHandler()
-//     {
-//         delete routine;
-//     }
-
-// private:
-//     RoutineHandler *father;
-//     RoutineProcess *routine;
-// };
